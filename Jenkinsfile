@@ -1,24 +1,38 @@
 pipeline {
-    agent any 
+    agent any
+    environment {
+        PATH = "/opt/maven3/bin:$PATH"
+    }
+    
     stages { 
-        stage('git clone') {
-            steps{'git branch: 'main', url: 'https://github.com/Ashok91825/maven.git'
-            
-        stage('Build') { 
-            steps {bat 'mvn compile'
+        stage('git checkout') {
+            steps{
                 
+            git credenpialsId: 'javahome', url: 'https://github.com/Ashok91825/maven.git'
             }
         }
-        stage('Test') { 
-            steps {bat 'mvn test'
-                
+        stage("Maven bulid"){
+            steps{
+                sh "mvn clean package"
             }
         }
-        stage('Deploy') { 
-            steps {
-                bat 'mvn deploy'
+        stage("deploy-dev") {
+            steps{
+                sshagent(['name']) {
+                }
             }
         }
     }
 }
-    }
+         
+          
+                
+            
+        
+       
+            
+                
+            
+        
+        
+                
