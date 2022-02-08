@@ -2,7 +2,8 @@ pipeline {
     agent any 
     stages { 
         stage('git clone') {
-            steps{
+            steps{'git branch: 'main', url: 'https://github.com/Ashok91825/maven.git'
+            }
         stage('Build') { 
             steps {bat 'mvn compile'
                 
