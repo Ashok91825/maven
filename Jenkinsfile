@@ -8,10 +8,10 @@ pipeline {
         stage('git checkout') {
             steps{
                 
-            git credentialsId: 'javahome', url: 'https://github.com/Ashok91825/maven.git'
+            git credentialsId: 'javahome' ; url: 'https://github.com/Ashok91825/maven.git'
             }
         }
-        stage("Maven bulid"){
+        stage("Maven Bulid"){
             steps{
                 sh "mvn clean package"
             }
